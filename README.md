@@ -9,9 +9,7 @@
 | Name | Role |
 |------|------|
 | **Sujal Krishna Das** | Project Lead, Pipeline Design, Dataset Preprocessing |
-| **Pratham Shetty** | Pretrained Model Integration, Training Loop |
-| **Rahul D Seervi** | Custom CNN Design, Lightweight Model Integration |
-| **Shreyas Sajeev** | Visualizations, Result Analysis |
+
 
 **Department of Artificial Intelligence and Robotics**
 
