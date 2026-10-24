@@ -1,10 +1,10 @@
-# 🛰️ Satellite Image Classification for Strategic Area Detection
+# Satellite Image Classification for Strategic Area Detection
 
 > Binary classification of EuroSAT satellite imagery using 10 CNN architectures — comparing pretrained transfer learning models against custom CNNs.
 
 ---
 
-## 👥 Authors
+## Authors
 
 | Name | Role |
 |------|------|
@@ -15,7 +15,7 @@
 
 ---
 
-## 📋 Overview
+## Overview
 
 This project implements a deep learning pipeline for **binary satellite image classification** using the [EuroSAT](https://github.com/phelber/EuroSAT) dataset. The goal is to detect **strategically significant land-use areas** — specifically Industrial zones and Highway corridors — from Sentinel-2 satellite imagery.
 
@@ -23,7 +23,7 @@ We benchmark **10 CNN architectures** under identical training conditions and co
 
 ---
 
-## 🗂️ Dataset
+## Dataset
 
 - **Source:** [EuroSAT (DFKI)](https://madm.dfki.de/files/sentinel/EuroSAT.zip)
 - **Size:** 27,000 labeled Sentinel-2 satellite images across 10 classes
@@ -39,7 +39,7 @@ We benchmark **10 CNN architectures** under identical training conditions and co
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### Pretrained Models (Transfer Learning)
 All pretrained models use **ImageNet weights** from `torchvision`, with the final classification layer replaced by `nn.Linear(in_features, 2)`.
@@ -65,7 +65,7 @@ Flatten → Linear(65536→128) → ReLU → Linear(128→2)
 
 ---
 
-## ⚙️ Training Setup
+## Training Setup
 
 ```python
 Optimizer   : Adam (lr=1e-3)
@@ -79,13 +79,13 @@ Test Split  : 20% (5,400 images)
 
 ---
 
-## 📊 Results
+## Results
 
 | Model | Final Loss | Test Accuracy |
 |-------|-----------|---------------|
-| 🥇 **ShuffleNet** | **0.0398** | **99.35%** |
-| 🥈 MobileNetV2 | 0.0476 | 99.00% |
-| 🥉 EfficientNetB0 | 0.0386 | 98.65% |
+| **ShuffleNet** | **0.0398** | **99.35%** |
+| MobileNetV2 | 0.0476 | 99.00% |
+| EfficientNetB0 | 0.0386 | 98.65% |
 | ResNet18 | 0.0820 | 96.17% |
 | DenseNet121 | 0.0915 | 92.06% |
 | Custom2 | ~0.25 | ~90.9% |
@@ -98,7 +98,7 @@ Test Split  : 20% (5,400 images)
 
 ---
 
-## 📈 Visualizations
+## Visualizations
 
 The notebook generates 6 plots:
 
@@ -111,7 +111,7 @@ The notebook generates 6 plots:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 ```bash
@@ -142,23 +142,23 @@ jupyter notebook kdrproject.ipynb
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-📦 repo-root
- ┣ 📓 kdrproject.ipynb       # Main Colab notebook
- ┣ 📄 README.md              # This file
- ┣ 📂 2750/                  # EuroSAT dataset (auto-downloaded)
- ┃ ┣ 📂 AnnualCrop/
- ┃ ┣ 📂 Forest/
- ┃ ┣ 📂 Highway/
- ┃ ┣ 📂 Industrial/
- ┃ ┗ 📂 ...
+ repo-root
+ ┣ kdrproject.ipynb       # Main Colab notebook
+ ┣ README.md              # This file
+ ┣ 2750/                  # EuroSAT dataset (auto-downloaded)
+ ┃ ┣ AnnualCrop/
+ ┃ ┣ Forest/
+ ┃ ┣ Highway/
+ ┃ ┣ Industrial/
+ ┃ ┗ ...
 ```
 
 ---
 
-## 🔑 Key Classes
+## Key Classes
 
 ### `SafeImageFolder`
 Subclass of `torchvision.datasets.ImageFolder` that forces `.convert("RGB")` on all images, preventing channel mismatch errors from multi-band satellite patches.
@@ -171,7 +171,7 @@ Generic function that replaces each model's output head with `nn.Linear(in_featu
 
 ---
 
-## 💡 Insights
+## Insights
 
 - **Lightweight wins:** ShuffleNet, MobileNetV2, and EfficientNetB0 — all under 6M parameters — dominated the leaderboard
 - **Size ≠ Accuracy:** VGG11 (133M params) achieved the worst pretrained accuracy (81.31%) due to convergence failure at 2 epochs
@@ -180,7 +180,7 @@ Generic function that replaces each model's output head with `nn.Linear(in_featu
 
 ---
 
-## 🔭 Future Work
+## Future Work
 
 - [ ] Extended training (5–10 epochs) with learning rate scheduling
 - [ ] Data augmentation (random flips, rotations, colour jitter)
@@ -191,13 +191,13 @@ Generic function that replaces each model's output head with `nn.Linear(in_featu
 
 ---
 
-## 📜 License
+## License
 
 This project is for academic purposes. The EuroSAT dataset is published under the [MIT License](https://github.com/phelber/EuroSAT/blob/master/LICENSE).
 
 ---
 
-## 📚 References
+## References
 
 1. Helber et al. (2019). *EuroSAT: A Novel Dataset and Deep Learning Benchmark.* IEEE JSTARS.
 2. He et al. (2016). *Deep Residual Learning for Image Recognition.* CVPR.
